@@ -1,7 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.0.0-alpha</Version>
+    <Authors>Christopher M Wood</Authors>
+    <PackageId>com.ChristopherMWood.XamarinChartJS</PackageId>
+    <Description>A simple package for Xamarin to enable to enable the use of Chart.js in Xamarin.Forms using C# or XAML via WebViews. - Chart configuration with C# objects
+- Sensible defaults
+- Platform independent solution
+- Offline support</Description>
+    <PackageProjectUrl></PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ChristopherMWood/XamarinChartJS</RepositoryUrl>
+    <PackageTags>chart webview xamarin.forms xamarin chart.js</PackageTags>
   </PropertyGroup>
 
 </Project>
