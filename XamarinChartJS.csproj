@@ -5,7 +5,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>1.0.0-alpha</Version>
     <Authors>Christopher M Wood</Authors>
-    <PackageId>com.ChristopherMWood.XamarinChartJS</PackageId>
+    <PackageId>Xamarin.Plugin.ChartJS</PackageId>
     <Description>A simple package for Xamarin to enable to enable the use of Chart.js in Xamarin.Forms using C# or XAML via WebViews. - Chart configuration with C# objects
 - Sensible defaults
 - Platform independent solution
