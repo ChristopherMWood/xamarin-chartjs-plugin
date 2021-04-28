@@ -15,4 +15,13 @@
     <PackageTags>chart webview xamarin.forms xamarin chart.js</PackageTags>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="src\" />
+    <Folder Include="src\Plugin.XamarinChartJS\" />
+    <Folder Include="src\Plugin.XamarinChartJS\Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1821" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
 </Project>
