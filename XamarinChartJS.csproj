@@ -1,18 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFrameworks>netstandard1.0;netstandard2.0;netstandard2.1</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>1.0.0-alpha</Version>
     <Authors>Christopher M Wood</Authors>
     <PackageId>Xamarin.Plugin.ChartJS</PackageId>
-    <Description>A simple package for Xamarin to enable to enable the use of Chart.js in Xamarin.Forms using C# or XAML via WebViews. - Chart configuration with C# objects
-- Sensible defaults
-- Platform independent solution
-- Offline support</Description>
-    <PackageProjectUrl></PackageProjectUrl>
+    <Description>A simple package for Xamarin to enable to enable the use of Chart.js in Xamarin.Forms using C# or XAML via WebViews. Features include chart configuration with C# and offline support.</Description>
+    <PackageProjectUrl>https://github.com/ChristopherMWood/XamarinChartJS</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ChristopherMWood/XamarinChartJS</RepositoryUrl>
     <PackageTags>chart webview xamarin.forms xamarin chart.js</PackageTags>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <Copyright>Copyright 2021</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,7 +20,13 @@
     <Folder Include="src\Plugin.XamarinChartJS\Models\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1821" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.356" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 </Project>
