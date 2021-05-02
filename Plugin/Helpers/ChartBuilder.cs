@@ -71,7 +71,7 @@ namespace Plugin.XamarinChartJS
                         chart.destroy();
                     }}
 
-                    chartLoadCalled = true;
+                    loadChartCalled = true;
                     chart = new Chart(
                         document.getElementById('chartCanvas'),
                         config
