@@ -8,7 +8,7 @@ namespace Plugin.XamarinChartJS
         private ChartBuilder chartBuilder;
         public bool webViewLoaded { get; private set; }
         public static readonly BindableProperty ConfigProperty =
-            BindableProperty.Create("Config", typeof(ChartConfig), typeof(ChartView), null, propertyChanged: OnConfigChanged);
+            BindableProperty.Create("Config", typeof(ChartViewConfig), typeof(ChartView), null, propertyChanged: OnConfigChanged);
 
         public ChartView()
         {
@@ -16,7 +16,7 @@ namespace Plugin.XamarinChartJS
             Navigated += WebViewOnNavigated;
         }
 
-        public ChartView(ChartConfig config) : base()
+        public ChartView(ChartViewConfig config) : base()
         {
             this.Config = config;
         }
@@ -26,9 +26,9 @@ namespace Plugin.XamarinChartJS
             webViewLoaded = true;
         }
 
-        public ChartConfig Config
+        public ChartViewConfig Config
         {
-            get { return (ChartConfig)GetValue(ConfigProperty); }
+            get { return (ChartViewConfig)GetValue(ConfigProperty); }
             set { SetValue(ConfigProperty, value); }
         }
 
@@ -37,11 +37,11 @@ namespace Plugin.XamarinChartJS
             if (newValue != null)
             {
                 var chartView = bindable as ChartView;
-                var config = newValue as ChartConfig;
+                var config = newValue as ChartViewConfig;
 
                 if (chartView.webViewLoaded)
                 {
-                    chartView.LoadChart((ChartConfig)newValue);
+                    chartView.LoadChart((ChartViewConfig)newValue);
                 }
                 else
                 {
@@ -50,7 +50,7 @@ namespace Plugin.XamarinChartJS
             }
         }
 
-        private void BuildChartInWebView(ChartConfig config)
+        private void BuildChartInWebView(ChartViewConfig config)
         {
             var htmlSource = new HtmlWebViewSource();
             htmlSource.Html = chartBuilder.BuildHTML(config);
@@ -63,7 +63,7 @@ namespace Plugin.XamarinChartJS
             Source = htmlSource;
         }
 
-        private void LoadChart(ChartConfig config)
+        private void LoadChart(ChartViewConfig config)
         {
             var json = chartBuilder.GetChartConfigJSON(config);
             Eval($"loadChart({ json });");

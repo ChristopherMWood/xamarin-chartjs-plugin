@@ -8,13 +8,14 @@
 
     <StackLayout>
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.ChartJS!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            <StackLayout>
+                <Label Text="Welcome to Xamarin.ChartJS!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+                <Picker x:Name="chartTypePicker" SelectedItem="{Binding SelectedType}" ItemsSource="{Binding Types}" SelectedIndexChanged="OnChartTypeChanged" />
+            </StackLayout>
         </Frame>
         <ScrollView x:Name="pageLayout">
-            <StackLayout WidthRequest="300">
-                <Button Text="Change Color" Clicked="ChangeColorTest"/>
-                <views:ChartView x:Name="firstChart" Config="{Binding Config}" HorizontalOptions="Center" HeightRequest="300" WidthRequest="300"/>
-                <views:ChartView Config="{Binding Config}" HorizontalOptions="Center" HeightRequest="300" WidthRequest="300"/>
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <views:ChartView x:Name="firstChart" Config="{Binding Config}" HorizontalOptions="FillAndExpand" HeightRequest="300"/>
             </StackLayout>
         </ScrollView>
     </StackLayout>

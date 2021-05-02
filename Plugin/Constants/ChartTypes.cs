@@ -1,15 +1,14 @@
 ﻿namespace Plugin.XamarinChartJS
 {
-    public enum ChartTypes
+    public class ChartTypes
     {
-        Line,
-        Bar,
-        Radar,
-        Doughnut,
-        Pie,
-        PolarArea,
-        Bubble,
-        Scatter,
-        Mixed
+        public static string Line = "line";
+        public static string Bar = "bar";
+        public static string Radar = "radar";
+        public static string Doughnut = "doughnut";
+        public static string Pie = "pie";
+        public static string PolarArea = "polarArea";
+        public static string Bubble = "bubble";
+        public static string Scatter = "scatter";
     }
 }

@@ -17,4 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Plugin\Plugin.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
 </Project>
