@@ -28,7 +28,7 @@ namespace Plugin.XamarinChartJS
             //TODO: Swap with local resource
             var chartJsScript = $"<script type=\"text/javascript\" src=\"{chartJSFilePath}\"></script>";
             var viewportMeta = "<meta name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1'/>";
-            var bodyStyle = $"style=\"{sizing}background-color:{config.ViewProperties.BackgroundColor.ToHex()};\"";
+            var bodyStyle = $"style=\"overflow:hidden;{sizing}background-color:{config.ViewProperties.BackgroundColor.ToHex()};\"";
 
             var document = $@"<html style=""width:100%;height:100%;"">
               <head>
