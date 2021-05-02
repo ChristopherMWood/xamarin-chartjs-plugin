@@ -1,6 +1,8 @@
 ﻿using System;
+using System.IO;
 using Newtonsoft.Json;
 using Plugin.XamarinChartJS.Models;
+using Xamarin.Forms;
 
 namespace Plugin.XamarinChartJS
 {
@@ -15,10 +17,16 @@ namespace Plugin.XamarinChartJS
                 sizing = "height:100%;";
             }
 
-            var padding = config.ViewProperties.Padding < 0 ? 0 : config.ViewProperties.Padding;
+            var chartJSFilePath = "chart.min.js";
 
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                chartJSFilePath = $"file:///android_asset/chart.min.js";
+            }
+
+            var padding = config.ViewProperties.Padding < 0 ? 0 : config.ViewProperties.Padding;
             //TODO: Swap with local resource
-            var chartJsScript = "<script src=\"chart.3.2.0.min.js\"></script>";
+            var chartJsScript = $"<script type=\"text/javascript\" src=\"{chartJSFilePath}\"></script>";
             var bodyStyle = $"style=\"{sizing}background-color:{config.ViewProperties.BackgroundColor.ToHex()};\"";
 
             var document = $@"<html style=""width:100%;height:100%;"">

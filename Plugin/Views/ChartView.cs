@@ -54,7 +54,12 @@ namespace Plugin.XamarinChartJS
         {
             var htmlSource = new HtmlWebViewSource();
             htmlSource.Html = chartBuilder.BuildHTML(config);
-            htmlSource.BaseUrl = string.Empty;
+
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                htmlSource.BaseUrl = string.Empty;
+            }
+
             Source = htmlSource;
         }
 

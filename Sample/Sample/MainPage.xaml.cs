@@ -30,7 +30,7 @@ namespace Sample
 
         public MainPage()
         {
-            Config = GetChartConfig(ChartTypes.Line, Color.White);
+            Config = GetChartConfig(ChartTypes.Pie, Color.White);
             InitializeComponent();
             BindingContext = this;
 

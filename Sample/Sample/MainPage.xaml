@@ -11,11 +11,9 @@
             <Label Text="Welcome to Xamarin.ChartJS!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
         <ScrollView x:Name="pageLayout">
-            <StackLayout HeightRequest="1200" WidthRequest="300">
+            <StackLayout WidthRequest="300">
                 <Button Text="Change Color" Clicked="ChangeColorTest"/>
                 <views:ChartView x:Name="firstChart" Config="{Binding Config}" HorizontalOptions="Center" HeightRequest="300" WidthRequest="300"/>
-                <views:ChartView Config="{Binding Config}" HorizontalOptions="Center" HeightRequest="300" WidthRequest="300"/>
-                <views:ChartView Config="{Binding Config}" HorizontalOptions="Center" HeightRequest="300" WidthRequest="300"/>
                 <views:ChartView Config="{Binding Config}" HorizontalOptions="Center" HeightRequest="300" WidthRequest="300"/>
             </StackLayout>
         </ScrollView>
