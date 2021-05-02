@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Plugin.XamarinChartJS;assembly=Plugin"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             x:Class="Sample.MainPage">
+
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label Text="Welcome to Xamarin.ChartJS!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+        <ScrollView x:Name="pageLayout">
+            <StackLayout HeightRequest="1200" WidthRequest="300">
+                <Button Text="Change Color" Clicked="ChangeColorTest"/>
+                <views:ChartView x:Name="firstChart" Config="{Binding Config}" HorizontalOptions="Center" HeightRequest="300" WidthRequest="300"/>
+                <views:ChartView Config="{Binding Config}" HorizontalOptions="Center" HeightRequest="300" WidthRequest="300"/>
+                <views:ChartView Config="{Binding Config}" HorizontalOptions="Center" HeightRequest="300" WidthRequest="300"/>
+                <views:ChartView Config="{Binding Config}" HorizontalOptions="Center" HeightRequest="300" WidthRequest="300"/>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+
+</ContentPage>
