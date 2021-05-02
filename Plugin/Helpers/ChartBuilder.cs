@@ -18,7 +18,7 @@ namespace Plugin.XamarinChartJS
             var padding = config.ViewProperties.Padding < 0 ? 0 : config.ViewProperties.Padding;
 
             //TODO: Swap with local resource
-            var chartJsScript = "<script src=\"https://cdn.jsdelivr.net/npm/chart.js\"></script>";
+            var chartJsScript = "<script src=\"chart.3.2.0.min.js\"></script>";
             var bodyStyle = $"style=\"{sizing}background-color:{config.ViewProperties.BackgroundColor.ToHex()};\"";
 
             var document = $@"<html style=""width:100%;height:100%;"">

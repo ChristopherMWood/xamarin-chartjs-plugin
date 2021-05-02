@@ -15,10 +15,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="src\" />
-    <Folder Include="src\Models\" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Xamarin.Forms" Version="4.5.0.356" />
   </ItemGroup>
@@ -27,5 +23,10 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\" />
+    <Folder Include="Constants\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
 </Project>

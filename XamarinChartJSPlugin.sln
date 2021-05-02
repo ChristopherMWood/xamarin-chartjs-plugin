@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{57CD796D-883A-4CBE-81C7-0C8CDC23B064}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginTests", "PluginTests\PluginTests.csproj", "{57CD796D-883A-4CBE-81C7-0C8CDC23B064}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Android", "Sample\Sample.Android\Sample.Android.csproj", "{CCBC56F8-79B1-4DF4-8567-A69F1D14A617}"
 EndProject
