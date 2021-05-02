@@ -3,6 +3,13 @@
     public enum ChartTypes
     {
         Line,
-        Pie
+        Bar,
+        Radar,
+        Doughnut,
+        Pie,
+        PolarArea,
+        Bubble,
+        Scatter,
+        Mixed
     }
 }

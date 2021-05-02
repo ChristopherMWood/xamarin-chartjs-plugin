@@ -2,8 +2,9 @@
 {
     public class ChartConfig
     {
-        public string ChartType;
-        public ChartData ChartData;
-        public ChartOptions ChartOptions;
+        public ViewProperties ViewProperties { get; set; } = new ViewProperties();
+        public ChartTypes Type { get; set; }
+        public ChartData Data { get; set; }
+        public ChartOptions Options { get; set; }
     }
 }

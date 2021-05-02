@@ -6,47 +6,83 @@ namespace Plugin.XamarinChartJS
 {
     public class ChartBuilder
     {
-        public string BuildHTML(ChartTypes chartType, ChartData data, ChartOptions options = null)
+        public string BuildHTML(ChartConfig config)
         {
-            var chartScript = GetChartScript(chartType, data, options);
-            return GetChartHTML(chartScript);
-        }
+            var sizing = "width:100%;";
 
-        private string GetChartScript(ChartTypes chartType, ChartData data, ChartOptions options)
-        {
-            var chartConfig = new
+            if (config.ViewProperties.PrimaryAxis == ChartTest.src.PrimaryAxis.Vertical)
             {
-                type = Enum.GetName(typeof(ChartTypes), chartType).ToLower(),
-                data = data,
-                options = options
-            };
-            var jsonConfig = JsonConvert.SerializeObject(chartConfig);
+                sizing = "height:100%;";
+            }
 
-            var script = $@"var config = { jsonConfig };
-            window.onload = function() {{
-              var canvasContext = document.getElementById(""chart"").getContext(""2d"");
-              new Chart(canvasContext, config);
-            }};";
-            return script;
-        }
+            var padding = config.ViewProperties.Padding < 0 ? 0 : config.ViewProperties.Padding;
 
-        private string GetChartHTML(string chartConfig)
-        {
-            var inlineStyle = "style=\"width:100%;height:100%;\"";
-            var chartJsScript = "<script src=\"Chart.bundle.min.js\"></script>";
-            var chartConfigJsScript = $"<script>{chartConfig}</script>";
+            //TODO: Swap with local resource
+            var chartJsScript = "<script src=\"https://cdn.jsdelivr.net/npm/chart.js\"></script>";
+            var bodyStyle = $"style=\"{sizing}background-color:{config.ViewProperties.BackgroundColor.ToHex()};\"";
 
-            var chartContent = $@"<div id=""chart-container"" {inlineStyle}>
-              <canvas id=""chart"" />
-                </div>";
-                        var document = $@"<html style=""width:97%;height:100%;"">
+            var document = $@"<html style=""width:100%;height:100%;"">
               <head>{chartJsScript}</head>
-              <body {inlineStyle}>
-                {chartContent}
-                {chartConfigJsScript}
+              <body {bodyStyle}>
+                <div style=""padding: {padding}px;"">
+                    <canvas id=""chartCanvas"">
+                    </canvas>
+                </div>
+                { BuildChartJavascript(config) }
               </body>
             </html>";
             return document;
+        }
+
+        public string GetChartConfigJSON(ChartConfig config)
+        {
+            var chartConfig = new
+            {
+                type = ChartTypeToString(config.Type),
+                data = config.Data,
+                options = config.Options
+            };
+
+            return JsonConvert.SerializeObject(chartConfig,
+                new JsonSerializerSettings()
+                {
+                    NullValueHandling = NullValueHandling.Ignore
+                });
+        }
+
+        private string BuildChartJavascript(ChartConfig config)
+        {
+            return $@"
+             <script>
+                var chartConfig = { GetChartConfigJSON(config) };
+                var loadChartCalled = false;
+                var chart;
+
+                function loadChart(config) {{
+                    if (loadChartCalled) {{
+                        chart.destroy();
+                    }}
+
+                    chartLoadCalled = true;
+                    chart = new Chart(
+                        document.getElementById('chartCanvas'),
+                        config
+                    );
+                }};
+
+                window.onload = function() {{
+                    if (!loadChartCalled) {{
+                        loadChart(chartConfig);
+                    }}
+                }};
+            </script>
+            ";
+        }
+
+        private string ChartTypeToString(ChartTypes type)
+        {
+            var enumString = Enum.GetName(typeof(ChartTypes), type);
+            return char.ToLowerInvariant(enumString[0]) + enumString.Substring(1);
         }
     }
 }

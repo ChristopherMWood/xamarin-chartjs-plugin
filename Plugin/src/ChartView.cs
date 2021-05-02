@@ -5,42 +5,63 @@ namespace Plugin.XamarinChartJS
 {
     public class ChartView : WebView
     {
+        private ChartBuilder chartBuilder;
+        public bool webViewLoaded { get; private set; }
+        public static readonly BindableProperty ConfigProperty =
+            BindableProperty.Create("Config", typeof(ChartConfig), typeof(ChartView), null, propertyChanged: OnConfigChanged);
+
         public ChartView()
         {
+            chartBuilder = new ChartBuilder();
+            Navigated += WebViewOnNavigated;
         }
 
-        public ChartView(ChartTypes chartType, ChartData data, ChartOptions options)
+        public ChartView(ChartConfig config) : base()
+        {
+            this.Config = config;
+        }
+
+        private void WebViewOnNavigated(object sender, WebNavigatedEventArgs e)
+        {
+            webViewLoaded = true;
+        }
+
+        public ChartConfig Config
+        {
+            get { return (ChartConfig)GetValue(ConfigProperty); }
+            set { SetValue(ConfigProperty, value); }
+        }
+
+        private static void OnConfigChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            if (newValue != null)
+            {
+                var chartView = bindable as ChartView;
+                var config = newValue as ChartConfig;
+
+                if (chartView.webViewLoaded)
+                {
+                    chartView.LoadChart((ChartConfig)newValue);
+                }
+                else
+                {
+                    chartView.BuildChartInWebView(config);
+                }
+            }
+        }
+
+        private void BuildChartInWebView(ChartConfig config)
         {
             var htmlSource = new HtmlWebViewSource();
-            htmlSource.Html = new ChartBuilder().BuildHTML(chartType, data, options);
-            this.Source = htmlSource;
+            htmlSource.Html = chartBuilder.BuildHTML(config);
+            htmlSource.BaseUrl = string.Empty;
+            Source = htmlSource;
         }
 
-        private string _chartType;
-        public string ChartType
+        private void LoadChart(ChartConfig config)
         {
-            get
-            {
-                return _chartType;
-            }
-            set
-            {
-                _chartType = value;
-
-                var htmlSource = new HtmlWebViewSource();
-                htmlSource.Html = "<h1>TESTING</h1>";// new ChartBuilder().BuildHTML(chartType, data, options);
-                this.Source = htmlSource;
-            }
-        }
-
-        public ChartData ChartData
-        {
-            get; set;
-        }
-
-        public ChartOptions ChartOptions
-        {
-            get; set;
+            var json = chartBuilder.GetChartConfigJSON(config);
+            Eval($"loadChart({ json });");
         }
     }
 }
