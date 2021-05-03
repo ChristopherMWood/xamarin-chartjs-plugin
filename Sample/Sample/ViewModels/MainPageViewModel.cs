@@ -34,7 +34,7 @@ namespace Sample.ViewModels
 
         public MainPageViewModel()
         {
-            Config = GetChartConfig(ChartTypes.Pie, Color.Red);
+            Config = GetChartConfig(ChartTypes.Pie, Color.White);
         }
 
         protected void OnPropertyChanged(string propertyName)
@@ -47,6 +47,11 @@ namespace Sample.ViewModels
         public void ChangeConfigType(string chartType)
         {
             Config = GetChartConfig(chartType, Color.White);
+        }
+
+        public void ChangeConfigBackgroundColor(string chartType, Color color)
+        {
+            Config = GetChartConfig(chartType, color);
         }
 
         private ChartViewConfig GetChartConfig(string chartType, Color color)

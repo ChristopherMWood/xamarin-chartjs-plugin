@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 using Plugin.XamarinChartJS.Models;
@@ -10,40 +12,52 @@ namespace Plugin.XamarinChartJS
     {
         public string BuildHTML(ChartViewConfig config)
         {
-            var sizing = "width:100%;";
+            var parentHtmlStyles = new Dictionary<string, string>
+            {
+                { "width", "100%" },
+                { "height", "100%" }
+            };
+
+            var bodyStyles = new Dictionary<string, string>
+            {
+                { "overflow", "hidden" },
+                { "width", "100%" },
+                { "background-color", GetRGBColor(config.ViewProperties.BackgroundColor) }
+            };
+
+            var padding = config.ViewProperties.Padding < 0 ? 0 : config.ViewProperties.Padding;
+
+            var contentDivStyles = new Dictionary<string, string>
+            {
+                { "padding", $"{padding.ToString()}px" }
+            };
 
             if (config.ViewProperties.PrimaryAxis == ChartTest.src.PrimaryAxis.Vertical)
             {
-                sizing = "height:100%;";
+                bodyStyles.Add("height", "100%");
             }
-
-            var chartJSFilePath = "chart.min.js";
-
-            if (Device.RuntimePlatform == Device.Android)
+            else
             {
-                chartJSFilePath = $"file:///android_asset/chart.min.js";
+                bodyStyles.Add("width", "100%");
             }
 
-            var padding = config.ViewProperties.Padding < 0 ? 0 : config.ViewProperties.Padding;
-            //TODO: Swap with local resource
-            var chartJsScript = $"<script type=\"text/javascript\" src=\"{chartJSFilePath}\"></script>";
+            var chartJsScript = $"<script type=\"text/javascript\" src=\"{ GetChartJSLocalPath() }\"></script>";
             var viewportMeta = "<meta name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1'/>";
-            var bodyStyle = $"style=\"overflow:hidden;{sizing}background-color:{config.ViewProperties.BackgroundColor.ToHex()};\"";
 
-            var document = $@"<html style=""width:100%;height:100%;"">
+            return $@"
+            <html style=""{ GetStyleString(parentHtmlStyles) }"">
               <head>
                 {chartJsScript}
                 {viewportMeta}
               </head>
-              <body {bodyStyle}>
-                <div style=""padding: {padding}px;"">
-                    <canvas id=""chartCanvas"">
-                    </canvas>
+              <body style=""{ GetStyleString(bodyStyles) }"">
+                <div style=""{ GetStyleString(contentDivStyles) }"">
+                  <canvas id=""chartCanvas"">
+                  </canvas>
                 </div>
                 { BuildChartJavascript(config) }
               </body>
             </html>";
-            return document;
         }
 
         public string GetChartConfigJSON(ChartViewConfig config)
@@ -83,10 +97,35 @@ namespace Plugin.XamarinChartJS
             ";
         }
 
+        private string GetChartJSLocalPath()
+        {
+            return Device.RuntimePlatform == Device.Android ? "file:///android_asset/chart.min.js" : "chart.min.js";
+        }
+
+        private string GetRGBColor(Color color)
+        {
+            var red = (int)(color.R * 255);
+            var green = (int)(color.G * 255);
+            var blue = (int)(color.B * 255);
+            return $"rgb({red}, {green}, {blue})";
+        }
+
         private string ChartTypeToString(ChartTypes type)
         {
             var enumString = Enum.GetName(typeof(ChartTypes), type);
             return char.ToLowerInvariant(enumString[0]) + enumString.Substring(1);
+        }
+
+        private string GetStyleString(Dictionary<string, string> styleSettings)
+        {
+            var styleString = string.Empty;
+
+            foreach (var setting in styleSettings)
+            {
+                styleString += $"{ setting.Key }: { setting.Value }; ";
+            }
+
+            return styleString;
         }
     }
 }

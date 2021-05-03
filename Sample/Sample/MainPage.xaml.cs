@@ -27,7 +27,7 @@ namespace Sample
 
         async void ChangeColorTest(object sender, EventArgs args)
         {
-            //Config = GetChartConfig(ChartTypes.Line, Color.Red);
+            viewModel.ChangeConfigBackgroundColor((string)chartTypePicker.SelectedItem, Color.Orange);
         }
     }
 }

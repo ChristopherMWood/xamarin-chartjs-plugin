@@ -11,13 +11,13 @@
             <StackLayout>
                 <Label Text="Welcome to Xamarin.ChartJS!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
                 <Picker x:Name="chartTypePicker" SelectedItem="{Binding SelectedType}" ItemsSource="{Binding Types}" SelectedIndexChanged="OnChartTypeChanged" />
+                <!--<Button Text="Change Color" Clicked="ChangeColorTest"/>-->
             </StackLayout>
         </Frame>
         <ScrollView x:Name="pageLayout">
             <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                <views:ChartView x:Name="firstChart" Config="{Binding Config}" HorizontalOptions="FillAndExpand" HeightRequest="300"/>
+                <views:ChartView x:Name="firstChart" Config="{Binding Config}" WidthRequest="300" HeightRequest="300"/>
             </StackLayout>
         </ScrollView>
     </StackLayout>
-
 </ContentPage>
