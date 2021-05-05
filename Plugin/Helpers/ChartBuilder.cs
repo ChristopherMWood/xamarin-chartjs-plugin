@@ -15,13 +15,13 @@ namespace Plugin.XamarinChartJS
             var parentHtmlStyles = new Dictionary<string, string>
             {
                 { "width", "100%" },
-                { "height", "100%" }
+                { "height", "100%" },
+                { "overflow", "hidden" },
             };
 
             var bodyStyles = new Dictionary<string, string>
             {
                 { "overflow", "hidden" },
-                { "width", "100%" },
                 { "background-color", GetRGBColor(config.ViewProperties.BackgroundColor) }
             };
 
@@ -29,20 +29,19 @@ namespace Plugin.XamarinChartJS
 
             var contentDivStyles = new Dictionary<string, string>
             {
-                { "padding", $"{padding.ToString()}px" }
+                { "padding", $"{padding}px" },
+                { "height", "100%" },
+                { "width", "100%" }
             };
-
-            if (config.ViewProperties.PrimaryAxis == ChartTest.src.PrimaryAxis.Vertical)
-            {
-                bodyStyles.Add("height", "100%");
-            }
-            else
-            {
-                bodyStyles.Add("width", "100%");
-            }
 
             var chartJsScript = $"<script type=\"text/javascript\" src=\"{ GetChartJSLocalPath() }\"></script>";
             var viewportMeta = "<meta name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1'/>";
+
+            var canvasStyles = new Dictionary<string, string>
+            {
+                { "width", "100" },
+                { "height", "100" }
+            };
 
             return $@"
             <html style=""{ GetStyleString(parentHtmlStyles) }"">
@@ -52,7 +51,7 @@ namespace Plugin.XamarinChartJS
               </head>
               <body style=""{ GetStyleString(bodyStyles) }"">
                 <div style=""{ GetStyleString(contentDivStyles) }"">
-                  <canvas id=""chartCanvas"">
+                  <canvas id=""chartCanvas"" style=""{ GetStyleString(canvasStyles) }"">
                   </canvas>
                 </div>
                 { BuildChartJavascript(config) }
