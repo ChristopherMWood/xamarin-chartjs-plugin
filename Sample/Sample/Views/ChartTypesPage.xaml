@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Plugin.XamarinChartJS;assembly=Plugin"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             Title="Chart Types"
+             x:Class="Sample.Views.ChartTypesPage">
+
+    <ScrollView x:Name="pageLayout">
+        <StackLayout>
+            <BoxView HeightRequest="1" BackgroundColor="Black" Margin="0,5,0,5"/>
+            <Label Text="Line Chart"/>
+            <views:ChartView Config="{Binding LineConfig}" HeightRequest="200"/>
+            <BoxView HeightRequest="1" BackgroundColor="Black" Margin="0,5,0,5"/>
+            <Label Text="Bar Chart"/>
+            <views:ChartView Config="{Binding BarConfig}" HeightRequest="200"/>
+            <BoxView HeightRequest="1" BackgroundColor="Black" Margin="0,5,0,5"/>
+            <Label Text="Radar Chart"/>
+            <views:ChartView Config="{Binding RadarConfig}" HeightRequest="200"/>
+            <BoxView HeightRequest="1" BackgroundColor="Black" Margin="0,5,0,5"/>
+            <Label Text="Doughnut Chart"/>
+            <views:ChartView Config="{Binding DoughnutConfig}" HeightRequest="200"/>
+            <BoxView HeightRequest="1" BackgroundColor="Black" Margin="0,5,0,5"/>
+            <Label Text="Pie Chart"/>
+            <views:ChartView Config="{Binding PieConfig}" HeightRequest="200"/>
+            <BoxView HeightRequest="1" BackgroundColor="Black" Margin="0,5,0,5"/>
+            <Label Text="Polar Area Chart"/>
+            <views:ChartView Config="{Binding PolarAreaConfig}" HeightRequest="200"/>
+            <BoxView HeightRequest="1" BackgroundColor="Black" Margin="0,5,0,5"/>
+            <Label Text="Bubble Chart"/>
+            <views:ChartView Config="{Binding BubbleConfig}" HeightRequest="200"/>
+            <BoxView HeightRequest="1" BackgroundColor="Black" Margin="0,5,0,5"/>
+            <Label Text="Scatter Chart"/>
+            <views:ChartView Config="{Binding ScatterConfig}" HeightRequest="200"/>
+            <BoxView HeightRequest="1" BackgroundColor="Black" Margin="0,5,0,5"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

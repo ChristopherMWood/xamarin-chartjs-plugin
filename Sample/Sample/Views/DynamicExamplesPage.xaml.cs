@@ -1,18 +1,16 @@
 ﻿using System;
-using System.ComponentModel;
-using Plugin.XamarinChartJS;
 using Sample.ViewModels;
 using Xamarin.Forms;
 
-namespace Sample
+namespace Sample.Views
 {
-    public partial class MainPage : ContentPage, INotifyPropertyChanged
+    public partial class DynamicExamplesPage : ContentPage
     {
-        private MainPageViewModel viewModel;
+        public DynamicExamplesViewModel viewModel;
 
-        public MainPage()
+        public DynamicExamplesPage()
         {
-            viewModel = new MainPageViewModel();
+            viewModel = new DynamicExamplesViewModel();
             InitializeComponent();
             BindingContext = viewModel;
         }
@@ -25,9 +23,10 @@ namespace Sample
                 viewModel.ChangeConfigType(selectedChartType);
         }
 
-        async void ChangeColorTest(object sender, EventArgs args)
+        public void OnChartColorChanged(object sender, EventArgs e)
         {
-            viewModel.ChangeConfigBackgroundColor((string)chartTypePicker.SelectedItem, Color.Orange);
+            var selectedColor = (Color)colorPicker.SelectedItem;
+            viewModel.ChangeConfigBackgroundColor(selectedColor);
         }
     }
 }

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:views="clr-namespace:Sample.Views"
+            x:Class="Sample.Views.MainNavigationPage">
+    <NavigationPage Title="Types">
+        <x:Arguments>
+            <views:ChartTypesPage />
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Layouts">
+        <x:Arguments>
+            <views:LayoutExamplesPage />
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Dynamics">
+        <x:Arguments>
+            <views:DynamicExamplesPage />
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="More">
+        <x:Arguments>
+            <views:AdditionalExamplesPage />
+        </x:Arguments>
+    </NavigationPage>
+</TabbedPage>

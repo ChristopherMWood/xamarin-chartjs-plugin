@@ -1,66 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using ChartTest.src;
-using Plugin.XamarinChartJS;
 using Plugin.XamarinChartJS.Models;
 using Xamarin.Forms;
 
-namespace Sample.ViewModels
+namespace Sample.Helpers
 {
-    public class MainPageViewModel : INotifyPropertyChanged
+    public class RandomChartBuilder
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        public string SelectedType { get; set; } = ChartTypes.Line;
-        public List<string> Types { get; set; } = new List<string>()
-        {
-            ChartTypes.Line,
-            ChartTypes.Bar,
-            ChartTypes.Radar,
-            ChartTypes.Doughnut,
-            ChartTypes.Pie,
-            ChartTypes.PolarArea,
-            ChartTypes.Bubble,
-            ChartTypes.Scatter
-        };
-        private ChartViewConfig _config;
-        public ChartViewConfig Config
-        {
-            get { return _config; }
-            set
-            { _config = value; OnPropertyChanged("Config"); }
-        }
-
-        public MainPageViewModel()
-        {
-            Config = GetChartConfig(ChartTypes.Pie, Color.White);
-        }
-
-        protected void OnPropertyChanged(string propertyName)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        public void ChangeConfigType(string chartType)
-        {
-            Config = GetChartConfig(chartType, Color.White);
-        }
-
-        public void ChangeConfigBackgroundColor(string chartType, Color color)
-        {
-            Config = GetChartConfig(chartType, color);
-        }
-
-        private ChartViewConfig GetChartConfig(string chartType, Color color)
+        public static ChartViewConfig GetChartConfig(string chartType, Color color)
         {
             return new ChartViewConfig()
             {
                 ViewProperties = new ViewProperties
                 {
-                    PrimaryAxis = PrimaryAxis.Vertical,
                     BackgroundColor = color,
                     Padding = 0
                 },
@@ -71,7 +24,7 @@ namespace Sample.ViewModels
                     options = new ChartOptions
                     {
                         responsive = true,
-                        maintainAspectRatio = true,
+                        maintainAspectRatio = false,
                         legend = new ChartLegend
                         {
                             position = "top"
@@ -85,7 +38,7 @@ namespace Sample.ViewModels
             };
         }
 
-        private ChartData GetChartData()
+        private static ChartData GetChartData()
         {
             var colors = GetDefaultColors();
             var labels = new[] { "Groceries", "Car", "Flat", "Electronics", "Entertainment", "Insurance" }.ToList();
@@ -113,7 +66,7 @@ namespace Sample.ViewModels
             };
         }
 
-        private List<Tuple<int, int, int>> GetDefaultColors()
+        private static List<Tuple<int, int, int>> GetDefaultColors()
         {
             return new List<Tuple<int, int, int>>
             {

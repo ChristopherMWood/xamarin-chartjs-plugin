@@ -1,6 +1,5 @@
-﻿using System;
+﻿using Sample.Views;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Sample
 {
@@ -10,7 +9,7 @@ namespace Sample
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new MainNavigationPage();
         }
 
         protected override void OnStart()

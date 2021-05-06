@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Sample.Views.AdditionalExamplesPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <Button Text="Large Chart Load Test" TextColor="White" HorizontalOptions="Center" VerticalOptions="Start" HeightRequest="50" BackgroundColor="Blue" Clicked="PageLoadTest"/>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
