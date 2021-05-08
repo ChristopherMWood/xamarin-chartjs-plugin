@@ -18,7 +18,7 @@
             </Frame>
             <ScrollView>
                 <StackLayout>
-                    <views:ChartView x:Name="dynamicChart" Config="{Binding Config}" HeightRequest="400"/>
+                    <views:ChartView x:Name="dynamicChart" HeightRequest="400"/>
                 </StackLayout>
             </ScrollView>
         </StackLayout>

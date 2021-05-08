@@ -7,7 +7,7 @@ namespace Plugin.XamarinChartJS.Helpers
 {
     public class ChartBuilder
     {
-        public string BuildHTML(ChartViewConfig config)
+        public static string BuildHTML(ChartViewConfig config)
         {
             var parentHtmlStyles = new Dictionary<string, string>
             {
@@ -53,15 +53,15 @@ namespace Plugin.XamarinChartJS.Helpers
             </html>";
         }
 
-        public string GetChartConfigJSON(ChartViewConfig config)
+        public static string GetChartConfigJSON(ChartConfig config)
         {
-            return JsonConvert.SerializeObject(config.ChartConfig,
+            return JsonConvert.SerializeObject(config,
                 new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
         }
 
-        private string BuildChartJavascript(ChartViewConfig config)
+        private static string BuildChartJavascript(ChartViewConfig config)
         {
-            var jsonConfig = GetChartConfigJSON(config);
+            var jsonConfig = GetChartConfigJSON(config.ChartConfig);
 
             return $@"
              <script>
@@ -81,6 +81,10 @@ namespace Plugin.XamarinChartJS.Helpers
                     );
                 }};
 
+                function changeChartBackgroundColor(color) {{
+                    document.body.style.backgroundColor = color;
+                }};
+
                 window.onload = function() {{
                     if (!loadChartCalled) {{
                         loadChart(chartConfig);
@@ -90,12 +94,12 @@ namespace Plugin.XamarinChartJS.Helpers
             ";
         }
 
-        private string GetChartJSLocalPath()
+        private static string GetChartJSLocalPath()
         {
             return Device.RuntimePlatform == Device.Android ? "file:///android_asset/chart.min.js" : "chart.min.js";
         }
 
-        private string GetRGBColor(Color color)
+        public static string GetRGBColor(Color color)
         {
             var red = (int)(color.R * 255);
             var green = (int)(color.G * 255);
@@ -103,7 +107,7 @@ namespace Plugin.XamarinChartJS.Helpers
             return $"rgb({red}, {green}, {blue})";
         }
 
-        private string GetStyleString(Dictionary<string, string> styleSettings)
+        private static string GetStyleString(Dictionary<string, string> styleSettings)
         {
             var styleString = string.Empty;
 
