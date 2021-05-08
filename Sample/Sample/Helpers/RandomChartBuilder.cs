@@ -14,13 +14,12 @@ namespace Sample.Helpers
             {
                 ViewProperties = new ViewProperties
                 {
-                    BackgroundColor = color,
-                    Padding = 0
+                    BackgroundColor = color
                 },
-                ChartConfig = new
+                ChartConfig = new ChartConfig
                 {
                     type = chartType,
-                    data = GetChartData(),
+                    data = GetChartData(new List<string> { chartType }),
                     options = new ChartOptions
                     {
                         responsive = true,
@@ -28,40 +27,65 @@ namespace Sample.Helpers
                         legend = new ChartLegend
                         {
                             position = "top"
-                        },
-                        animation = new ChartAnimation
-                        {
-                            animateScale = false
                         }
                     }
                 }
             };
         }
 
-        private static ChartData GetChartData()
+        public static ChartViewConfig GetChartConfig(IEnumerable<string> chartTypes, Color color)
         {
-            var colors = GetDefaultColors();
+            return new ChartViewConfig()
+            {
+                ViewProperties = new ViewProperties
+                {
+                    BackgroundColor = color
+                },
+                ChartConfig = new ChartConfig
+                {
+                    data = GetChartData(chartTypes),
+                    options = new ChartOptions
+                    {
+                        responsive = true,
+                        maintainAspectRatio = false,
+                        legend = new ChartLegend
+                        {
+                            position = "top"
+                        }
+                    }
+                }
+            };
+        }
+
+        private static ChartData GetChartData(IEnumerable<string> chartTypes)
+        {
             var labels = new[] { "Groceries", "Car", "Flat", "Electronics", "Entertainment", "Insurance" }.ToList();
-            var randomGen = new Random();
-            var dataPoints = Enumerable.Range(0, labels.Count)
-                .Select(i => randomGen.Next(5, 25))
-                .ToList();
+            var dataSets = new List<ChartDataset>();
+
+            foreach (var chartType in chartTypes)
+            {
+                var colors = GetDefaultColors();
+                var randomGen = new Random();
+                var dataPoints = Enumerable.Range(0, labels.Count)
+                    .Select(i => randomGen.Next(5, 25))
+                    .ToList();
+
+                dataSets.Add(new ChartDataset
+                {
+                    type = chartType,
+                    label = "Spending",
+                    data = dataPoints,
+                    backgroundColor = dataPoints.Select((d, i) =>
+                    {
+                        var color = colors[i % colors.Count];
+                        return $"rgb({color.Item1},{color.Item2},{color.Item3})";
+                    })
+                });
+            }
 
             return new ChartData()
             {
-                datasets = new List<ChartDataset>
-                {
-                    new ChartDataset
-                    {
-                        label = "Spending",
-                        data = dataPoints,
-                        backgroundColor = dataPoints.Select((d, i) =>
-                        {
-                            var color = colors[i % colors.Count];
-                            return $"rgb({color.Item1},{color.Item2},{color.Item3})";
-                        })
-                    }
-                },
+                datasets = dataSets,
                 labels = labels
             };
         }

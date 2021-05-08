@@ -2,6 +2,9 @@
 {
     public class ChartAnimation
     {
-        public bool animateScale { get; set; }
+        public int? duration { get; set; }
+        public string easing { get; set; }
+        public int? delay { get; set; }
+        public bool? loop { get; set; }
     }
 }

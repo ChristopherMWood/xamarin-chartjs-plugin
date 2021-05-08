@@ -1,8 +1,10 @@
 ﻿namespace Plugin.XamarinChartJS.Models
 {
-    public class ChartViewConfig
+    public class ChartConfig
     {
-        public ViewProperties ViewProperties { get; set; } = new ViewProperties();
-        public object ChartConfig { get; set; }
+        public string type { get; set; }
+        public ChartData data { get; set; }
+        public ChartOptions options { get; set; }
+        public ChartDefaults defaults { get; set; }
     }
 }

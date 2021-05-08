@@ -3,9 +3,23 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Sample.Views.AdditionalExamplesPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Start" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="BackgroundColor" Value="Blue" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
-            <Button Text="Large Chart Load Test" TextColor="White" HorizontalOptions="Center" VerticalOptions="Start" HeightRequest="50" BackgroundColor="Blue" Clicked="PageLoadTest"/>
+            <StackLayout>
+                <Button Text="Large Chart Load Test" Clicked="PageLoadTest" Style="{DynamicResource buttonStyle}"/>
+                <Button Text="MultiCharts" Clicked="MultiCharts" Style="{DynamicResource buttonStyle}"/>
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

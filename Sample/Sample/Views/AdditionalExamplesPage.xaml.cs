@@ -15,5 +15,10 @@ namespace Sample.Views
         {
             await Navigation.PushAsync(new ChartLoadStressTest());
         }
+
+        async void MultiCharts(object sender, EventArgs args)
+        {
+            await Navigation.PushAsync(new MixedChartsPage());
+        }
     }
 }

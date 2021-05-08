@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using Newtonsoft.Json;
 using Plugin.XamarinChartJS.Models;
 using Xamarin.Forms;
@@ -25,11 +23,8 @@ namespace Plugin.XamarinChartJS
                 { "background-color", GetRGBColor(config.ViewProperties.BackgroundColor) }
             };
 
-            var padding = config.ViewProperties.Padding < 0 ? 0 : config.ViewProperties.Padding;
-
             var contentDivStyles = new Dictionary<string, string>
             {
-                { "padding", $"{padding}px" },
                 { "height", "100%" },
                 { "width", "100%" }
             };
