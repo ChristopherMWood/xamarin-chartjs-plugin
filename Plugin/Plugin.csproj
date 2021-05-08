@@ -25,8 +25,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\" />
-    <Folder Include="Constants\" />
-    <Folder Include="Helpers\" />
+    <Folder Include="XamarinChartJS.Constants\" />
+    <Folder Include="XamarinChartJS.Helpers\" />
+    <Folder Include="XamarinChartJS.Models\Options\" />
+    <Folder Include="XamarinChartJS.Models\Data\" />
   </ItemGroup>
 </Project>

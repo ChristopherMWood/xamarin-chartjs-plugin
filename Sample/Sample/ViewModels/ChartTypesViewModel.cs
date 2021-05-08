@@ -23,8 +23,8 @@ namespace Sample.ViewModels
             DoughnutConfig = RandomChartBuilder.GetChartConfig(Plugin.XamarinChartJS.ChartTypes.Doughnut, Color.White);
             PieConfig = RandomChartBuilder.GetChartConfig(Plugin.XamarinChartJS.ChartTypes.Pie, Color.White);
             PolarAreaConfig = RandomChartBuilder.GetChartConfig(Plugin.XamarinChartJS.ChartTypes.PolarArea, Color.White);
-            BubbleConfig = RandomChartBuilder.GetChartConfig(Plugin.XamarinChartJS.ChartTypes.Bubble, Color.White);
-            ScatterConfig = RandomChartBuilder.GetChartConfig(Plugin.XamarinChartJS.ChartTypes.Scatter, Color.White);
+            BubbleConfig = RandomChartBuilder.GetBubbleChartConfig(Color.White);
+            ScatterConfig = RandomChartBuilder.GetScatterChartConfig(Color.White);
         }
     }
 }

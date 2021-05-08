@@ -6,7 +6,7 @@ namespace Plugin.XamarinChartJS.Models
     public class ChartOptions
     {
         public bool? responsive { get; set; }
-        public bool? maintainAspectRatio { get; set; }
+        public bool? maintainAspectRatio { get; set; } = false;
         public double? aspectRatio { get; set; }
         public double? resizeDelay { get; set; }
         public double? devicePixelRatio { get; set; }

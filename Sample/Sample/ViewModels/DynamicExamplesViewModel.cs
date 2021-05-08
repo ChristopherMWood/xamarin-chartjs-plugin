@@ -62,7 +62,7 @@ namespace Sample.ViewModels
 
         public void ChangeConfigBackgroundColor(Color color)
         {
-            Config.ViewProperties.BackgroundColor = Color.Red;
+            Config.BackgroundColor = Color.Red;
             Config = Config;
             //OnPropertyChanged("Config");
         }

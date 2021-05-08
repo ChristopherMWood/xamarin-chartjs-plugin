@@ -1,4 +1,5 @@
-﻿using Plugin.XamarinChartJS.Models;
+﻿using Plugin.XamarinChartJS.Helpers;
+using Plugin.XamarinChartJS.Models;
 using Xamarin.Forms;
 
 namespace Plugin.XamarinChartJS

@@ -4,7 +4,7 @@ namespace Plugin.XamarinChartJS.Models
 {
     public class ChartData
     {
-        public IEnumerable<ChartDataset> datasets { get; set; }
+        public IEnumerable<IChartDataset> datasets { get; set; }
         public IEnumerable<string> labels { get; set; }
     }
 }

@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 using Plugin.XamarinChartJS.Models;
 using Xamarin.Forms;
 
-namespace Plugin.XamarinChartJS
+namespace Plugin.XamarinChartJS.Helpers
 {
     public class ChartBuilder
     {
@@ -20,7 +19,7 @@ namespace Plugin.XamarinChartJS
             var bodyStyles = new Dictionary<string, string>
             {
                 { "overflow", "hidden" },
-                { "background-color", GetRGBColor(config.ViewProperties.BackgroundColor) }
+                { "background-color", GetRGBColor(config.BackgroundColor) }
             };
 
             var contentDivStyles = new Dictionary<string, string>
@@ -102,12 +101,6 @@ namespace Plugin.XamarinChartJS
             var green = (int)(color.G * 255);
             var blue = (int)(color.B * 255);
             return $"rgb({red}, {green}, {blue})";
-        }
-
-        private string ChartTypeToString(ChartTypes type)
-        {
-            var enumString = Enum.GetName(typeof(ChartTypes), type);
-            return char.ToLowerInvariant(enumString[0]) + enumString.Substring(1);
         }
 
         private string GetStyleString(Dictionary<string, string> styleSettings)
