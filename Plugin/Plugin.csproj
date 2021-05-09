@@ -17,7 +17,7 @@
     <NeutralLanguage>en</NeutralLanguage>
     <Owners>Christopher M Wood</Owners>
     <Configurations>Release;Debug</Configurations>
-    <PackageIconUrl>logo.png</PackageIconUrl>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -38,5 +38,6 @@
     <Folder Include="XamarinChartJS.Helpers\" />
     <Folder Include="XamarinChartJS.Models\Options\" />
     <Folder Include="XamarinChartJS.Models\Data\" />
+      <None Include="icon.png" Pack="true" PackagePath=""/>
   </ItemGroup>
 </Project>

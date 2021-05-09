@@ -1,4 +1,7 @@
-# XamarinChartJS
+<div align="center">
+  <img width="128" src="./Plugin/icon.png" alt="Plugin Icon">
+  <h1 >XamarinChartJS</h1>
+</div>
 An easy to use (or at least intented to be easy) Nuget Package for Xamarin.Forms to use Chart.js in Xamarin with C# configurations. This came about because looking for a full featured charting library that doesn't cost hundreds if not thousands for a license on Mobile is not easy. And when you find an open source native library, they are pretty good but nothing compared to what the Web world has had for so long. In my research I found a proof of concept of the idea of using Charts in WebViews and I extended that idea with Chart.js, one of my favorite Web charting frameworks.
 
 ## Features
