@@ -13,6 +13,7 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Xamarin.Plugin.ChartJS" Version="1.0.0-beta" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\" />
@@ -41,8 +42,5 @@
       <DependentUpon>ChartLoadStressTest.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Plugin\Plugin.csproj" />
   </ItemGroup>
 </Project>
