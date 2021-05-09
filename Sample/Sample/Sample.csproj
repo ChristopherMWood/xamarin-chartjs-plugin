@@ -15,9 +15,6 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Plugin\Plugin.csproj" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="ViewModels\" />
     <Folder Include="Views\" />
     <Folder Include="Views\AdditionalExamples\" />
@@ -44,5 +41,8 @@
       <DependentUpon>ChartLoadStressTest.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Plugin\Plugin.csproj" />
   </ItemGroup>
 </Project>

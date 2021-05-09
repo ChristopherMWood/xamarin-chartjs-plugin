@@ -92,7 +92,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="chart.min.js" />
+    <AndroidAsset Include="Assets\chart.min.js" />
   </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
