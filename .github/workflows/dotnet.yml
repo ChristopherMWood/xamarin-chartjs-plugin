@@ -31,11 +31,3 @@ jobs:
       with:
           PROJECT_FILE_PATH: Plugin/Plugin.csproj
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-    - name: Tag Release
-      working-directory: ./Plugin
-      run: |
-        TAG_VERSION=$(awk -F "[><]" '/Version/{print $3}' Plugin.csproj)
-        TAG_VERSION=${TAG_VERSION//$'\n'/}
-        TAG_VERSION=${TAG_VERSION//$'\r'/}
-        git tag $TAG_VERSION
-        git push --tags
