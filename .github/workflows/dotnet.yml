@@ -26,6 +26,11 @@ jobs:
     - name: Test
       working-directory: ./PluginTests
       run: dotnet test --no-build --verbosity normal
+    - name: Publish Xamarin.Plugin.ChartJS to Nuget
+      uses: brandedoutcast/publish-nuget@v2.5.2
+      with:
+          PROJECT_FILE_PATH: Plugin/Plugin.csproj
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
     - name: Tag Release
       working-directory: ./Plugin
       run: |
@@ -34,10 +39,3 @@ jobs:
         TAG_VERSION=${TAG_VERSION//$'\r'/}
         git tag $TAG_VERSION
         git push --tags
-    # - name: Publish Xamarin.Plugin.ChartJS to Nuget
-    #   uses: brandedoutcast/publish-nuget@v2.5.2
-    #   with:
-    #       PROJECT_FILE_PATH: Plugin/Plugin.csproj
-    #       NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-
-
