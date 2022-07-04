@@ -6,8 +6,7 @@
 ![Nuget](https://img.shields.io/nuget/v/Xamarin.Plugin.ChartJS) 
 [![.NET](https://github.com/ChristopherMWood/XamarinChartJSPlugin/actions/workflows/dotnet.yml/badge.svg)](https://github.com/ChristopherMWood/XamarinChartJSPlugin/actions/workflows/dotnet.yml)
 
-# Plugin Deprecated
-**NOTE:** This plugin is deprecated and no longer being maintained due to the release of .NET Maui. The new repo with Maui support is located here.
+**NOTE:** This plugin will be deprecated and no longer maintained once .NET Maui is in full support and has been out for enough time. The new repo with Maui support will be located here.
 - https://github.com/ChristopherMWood/maui-chartjs-plugin
 
 ## About
